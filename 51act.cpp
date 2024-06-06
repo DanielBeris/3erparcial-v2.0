@@ -3,7 +3,7 @@
 using namespace std;
 int main() {
     char contraseña[20],name[50];
-    int Articulos=1, precio, factura=0;
+    int Articulos=1, precio,j, factura[j],cont;
     string resp;
     int i = 0;
     while (i < 3) {
@@ -16,22 +16,30 @@ int main() {
         cout << "¡Contraseña correcta, "<<"\n";
         cout << "Bienvenido, " << name << "\n";
         do {
-        cout << "Para finalizar introduzca '0'";
-        do {
-            cout << "Cuantos articulos compro? \n";
-            cin >> Articulos;
-            if (Articulos==0)
-            {
-                break;
-            }
-            cout << "Cual es el precio de dicho articulo? \n";
-            cin >> precio;
-            factura=(precio*Articulos)+factura;
+            j++;
+            cout << "Para finalizar introduzca '0'\n";
+            do {
+                cout << "Cuantos articulos compro? \n";
+                cin >> Articulos;
+                i++;
+                if (Articulos==0)
+                {
+                    break;
+                }
+                cout << "Cual es el precio del articulo "<<i<<" \n";
+                cin >> precio;
+                factura[j]=(precio*Articulos)+factura[j];
+                cout << "Su factura es de " << factura[j]<<"\n";
+                cont=cont+1;
         } while (Articulos!=0);
-        cout << "Su factura es de " << factura<<"\n";
         cout << "Desea agregar otra factura de algun otro cliente? \n";
         cin >> resp;
         } while (resp=="si");
+        for (j=0; j == cont; j++)
+        {
+            cout << "la factura del clente "<<j+1<<" es "<< factura[j+1]<<"\n";
+        }
+        
         break;
     } 
     else 
@@ -40,7 +48,8 @@ int main() {
         i++;
     }
     }
-    if (i == 3) {
+    if (i == 3) 
+    {
     cout << "Demasiados intentos. Intenta más tarde.\n";
     }
     return 0;
