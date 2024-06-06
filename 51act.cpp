@@ -2,17 +2,18 @@
 #include <cstring> 
 using namespace std;
 int main() {
-    char contraseña[20];
-    char name[50],resp[2];
+    char contraseña[20],name[50];
     int Articulos=1, precio, factura=0;
-    cout << "Hola, ¿cómo te llamas? ";
-    cin.getline(name, 50); 
+    string resp;
     int i = 0;
     while (i < 3) {
-    cout << "Ingresa tu contraseña (te quedan " << 3 - i << " intentos): ";
+    cout << "Hola, ¿cómo te llamas? ";
+    cin.getline(name, 50); 
+    cout << "Ingresa tu contraseña (tienes " << 3 - i << " intentos): ";
     cin.getline(contraseña, 20); 
-    if (strcmp(contraseña, "2bm03") == 0) {
-        cout << "¡Contraseña correcta, " << name <<"\n";
+    if (strcmp(contraseña, "2b03") == 0 && strcmp(name, "Daniel") == 0) 
+    {
+        cout << "¡Contraseña correcta, "<<"\n";
         cout << "Bienvenido, " << name << "\n";
         do {
         cout << "Para finalizar introduzca '0'";
@@ -30,10 +31,12 @@ int main() {
         cout << "Su factura es de " << factura<<"\n";
         cout << "Desea agregar otra factura de algun otro cliente? \n";
         cin >> resp;
-        } while (resp == "si");
+        } while (resp=="si");
         break;
-    } else {
-        cout << "Contraseña incorrecta. Prueba de nuevo.\n";
+    } 
+    else 
+    {
+        cout << "Contraseña o usuario incorrecta. Prueba de nuevo.\n";
         i++;
     }
     }
