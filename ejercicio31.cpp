@@ -1,17 +1,43 @@
 #include <iostream>
+#include <cstring> 
 using namespace std;
-int main()
+int mult (int Articulos,int precio)
 {
-    int num[5],numero;
-    for (int i = 0; i < 5; i++)
-    {
-        cout<<"Digite un numero para la posicion "<<i+1<<"\n";
-        cin>>numero;
-        num[i]=numero;
+    return Articulos*precio;
+}
+int main() {
+    char contraseña[20];
+    char name[50];
+    int Articulos=1, precio, factura=0;
+    cout << "Hola, ¿cómo te llamas? ";
+    cin.getline(name, 50); 
+    int i = 0;
+    while (i < 3) {
+    cout << "Ingresa tu contraseña (te quedan " << 3 - i << " intentos): ";
+    cin.getline(contraseña, 20); 
+    if (strcmp(contraseña, "2bm03") == 0) {
+        cout << "¡Contraseña correcta, " << name <<"\n";
+        cout << "Bienvenido, " << name << "\n";
+        do {
+            cout << "Cuantos articulos compro? \n";
+            cin >> Articulos;
+            if (Articulos==0)
+            {
+                break;
+            }
+            cout << "Cual es el precio de dicho articulo? \n";
+            cin >> precio;
+            factura=mult(Articulos, precio)+factura;
+        } while (Articulos!=0);
+        cout << "Su factura es de " << factura;
+        break;
+    } else {
+        cout << "Contraseña incorrecta. Prueba de nuevo.\n";
+        i++;
     }
-    for (int i = 0; i < 5; i++)
-    {
-        cout<<"El dato de la posicion "<<i+1<<" es: "<<num[i]<<"\n";
+    }
+    if (i == 3) {
+    cout << "Demasiados intentos. Intenta más tarde.\n";
     }
     return 0;
 }
